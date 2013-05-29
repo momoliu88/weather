@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  city: MyString
+  temperature: MyString
+  wind: MyString
+  weather: MyString
+  wind_level: MyString
+  index: MyString
+  date: MyString
+  week: MyString
+
+two:
+  city: MyString
+  temperature: MyString
+  wind: MyString
+  weather: MyString
+  wind_level: MyString
+  index: MyString
+  date: MyString
+  week: MyString

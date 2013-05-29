@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>姓名:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>手机:</b>
+  <%= @user.mobile_number %>
+</p>
+<p>
+  <b>位置:</b>
+  <%= @user.location %>
+</p>
+<p>
+  <b>性别:</b>
+  <%= @user.sex %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
