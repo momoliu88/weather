@@ -53,6 +53,15 @@ class TasksController < ApplicationController
     end
   end
 
+  def check_task
+    @task = Task.find(params[:id])
+    #@status = task.status
+    @progress = params[:progress].to_i+30
+    
+    respond_to do |format|
+      format.js
+    end
+  end
   # PUT /tasks/1
   # PUT /tasks/1.json
   def update

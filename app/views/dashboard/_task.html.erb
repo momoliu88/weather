@@ -1,11 +1,10 @@
-
-<div class="box-content">
+<div class="box-content" id="taskcontent">
 <%if @tasks %>
 <div class="dataTables_wrapper" role="grid">
 	<%=form_tag('dashboard/send_messages',:method=>:post,:remote=>true) do-%>
 	<fieldset>
 <div class="control-group">
-<table id="DataTables_Table_1" class="table table-striped table-bordered bootstrap-datatable datatable dataTable">
+<table class="table table-striped table-bordered bootstrap-datatable datatable">
   <tr role="row">
   		<th rowspan='1' colspan='1' style="width: 10px;">确认？</th>
    	 	<th rowspan='1' colspan='1' style="width: 50px;">城市</th>
@@ -14,15 +13,15 @@
  	 <% @tasks.each do |task| %>
   		<tr role="row">
 	  	  <td>
-			  <input type="hidden" id="<%=task.city_code%>_1" name="<%=task.city_code%>"/>
 			  <input type="checkbox"  value="1" code="<%=task.city_code%>" checked="checked"/></td>
 	  	  <td disable="false"><%= task.city %></td>
    	  	  <td class="info" code="<%=task.city_code%>"><div contenteditable><%= task.weather_info %></div>
-			  <input type="hidden" id="<%=task.city_code%>_2" name="<%=task.city_code%>_info"/>
+		      <input type="hidden" id="<%=task.city_code%>_1" name="infos[<%=task.city_code%>]"/>
 		  </td>     
-  		</tr>
+  		</tr>		
   	 <%end%>
   </table>
+  <input type="hidden" id="city_codes" name="city_codes"/>
   
     </div>
   <div class="form-actions">

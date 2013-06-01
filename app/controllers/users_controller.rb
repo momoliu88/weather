@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -27,6 +26,7 @@ class UsersController < ApplicationController
     @user = User.new
 
     respond_to do |format|
+      format.js
       format.html # new.html.erb
       format.json { render json: @user }
     end
@@ -40,14 +40,22 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    
     @user = User.new(params[:user])
-
+    if(params[:user][:sex] == "male")
+      puts "male"
+      @user.sex = 1
+    else
+      @user.sex = 0
+    end
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.js
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
+        format.js
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -57,7 +65,12 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
-
+    if(params[:user][:sex]=="male")
+      params[:user][:sex] =1 
+    else
+      params[:user][:sex] = 0
+    end
+    puts params
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'User was successfully updated.' }

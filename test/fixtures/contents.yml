@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyString
+  status: 1
+  area_code: MyString
+
+two:
+  content: MyString
+  status: 1
+  area_code: MyString

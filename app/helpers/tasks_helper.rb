@@ -3,6 +3,9 @@ require 'json'
 
 module TasksHelper
   # create task automotically
+  def all_tasks
+    Task.all(:order=>"created_at desc")
+  end
   def create_task
     locations = Location.all
     @tasks = Array.new
@@ -10,11 +13,19 @@ module TasksHelper
       task = Task.new
       city_code = location.city_code
       task.city = location.location
-      task.city_code = location.city_code
+      task.area_code = location.area_code
+      task.city_code = city_code
       task.weather_info = get_weather_info city_code
+      task.created_at = Time.now
+      puts task.created_at
+      puts Time.now
       @tasks << task
     }
     @tasks
+  end
+   
+  def _weather_info
+    Task.all
   end
   def get_weather_info city_code
     uri_str = "http://m.weather.com.cn/data/"+city_code+".html"

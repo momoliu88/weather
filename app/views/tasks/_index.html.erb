@@ -1,0 +1,36 @@
+	
+<table id="tasks_table_1" class="table table-striped table-bordered bootstrap-datatable datatable">
+	<thead>
+  <tr>
+      <th>任务创建时间</th>
+    <th>城市</th>
+    <th>发送信息</th>
+	<th>预计发送人数</th>	
+    <th>发送状态</th>
+  </tr>
+</thead>
+<tbody>
+<% @tasks.each do |task| %>
+  <tr>
+      <td class="center"><%= task.created_at %></td>
+    <td class="center"><%= task.city %></td>
+    <td class="center"><%= task.weather_info %></td>
+    <td class="center"><%= get_user_nums task.area_code %></td>
+	<td class="center" style="width:15%">
+		<%if task.status == TaskStatus::COMPELETED%>
+		<span class="label label-success">发送成功</span>
+		<%elsif task.status == TaskStatus::SENDING%>
+		<div class="progress progress-striped progress-success active sendingTask" id="<%=task.id%>">
+			<div style="width:1%;" class="bar"></div>
+		</div>
+		<%end%>
+	</td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<script>
+	checkTaskStateTimer();
+</script>
+

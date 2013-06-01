@@ -5,10 +5,13 @@
   <%= @location.location %>
 </p>
 <p>
-  <b>代号</b>
+  <b>天气编号</b>
   <%= @location.city_code %>
 </p>
-
+<p>
+  <b>区号</b>
+  <%= @location.area_code %>
+</p>
 
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>

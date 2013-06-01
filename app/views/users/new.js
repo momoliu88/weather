@@ -1,0 +1,1 @@
+$("#content_inner").replaceWith("<%=escape_javascript(render(:partial=>'users/new'))%>");

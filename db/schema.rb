@@ -11,13 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130529123730) do
+ActiveRecord::Schema.define(:version => 20130531081049) do
+
+  create_table "contents", :force => true do |t|
+    t.string   "content"
+    t.integer  "status"
+    t.string   "area_code"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "weather_code"
+    t.string   "cityname"
+  end
 
   create_table "locations", :force => true do |t|
     t.string   "location"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "city_code"
+    t.string   "area_code"
   end
 
   create_table "tasks", :force => true do |t|
@@ -25,6 +36,8 @@ ActiveRecord::Schema.define(:version => 20130529123730) do
     t.string   "weather_info"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "area_code"
+    t.integer  "status"
     t.string   "city_code"
   end
 
@@ -35,6 +48,9 @@ ActiveRecord::Schema.define(:version => 20130529123730) do
     t.integer  "sex"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.date     "subscrip_time"
+    t.date     "quit_time"
+    t.string   "area_code"
   end
 
   create_table "weather_forcasts", :force => true do |t|
